@@ -1,0 +1,21 @@
+# Rust build artifacts
+/target/
+
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Release builds (kept for distribution)
+# /release/

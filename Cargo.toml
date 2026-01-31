@@ -1,0 +1,73 @@
+[package]
+name = "rustle"
+version = "0.1.0"
+edition = "2021"
+authors = ["imsudip45"]
+description = "A fast, lightweight Windows 11 search widget - rustles through your files instantly"
+license = "MIT"
+repository = "https://github.com/imsudip45/rustle"
+readme = "README.md"
+keywords = ["windows", "search", "launcher", "productivity", "widget"]
+categories = ["command-line-utilities", "gui"]
+
+[dependencies]
+# Windows API bindings - comprehensive Windows support
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_Graphics_Gdi",
+    "Win32_Graphics_Dwm",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Threading",
+    "Win32_System_Console",
+    "Win32_UI_Shell",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Com",
+    "Win32_UI_Controls",
+    "Win32_System_DataExchange",
+    "Win32_System_Memory",
+]}
+
+# Directory traversal
+walkdir = "2.5"
+
+# Standard directory paths (Documents, Downloads, etc.)
+dirs = "5.0"
+
+# Lazy static initialization
+once_cell = "1.19"
+
+# Logging
+log = "0.4"
+env_logger = "0.11"
+
+# Error handling
+thiserror = "1.0"
+
+# Unicode normalization for search
+unicode-normalization = "0.1"
+
+# Fuzzy matching for search
+fuzzy-matcher = "0.3"
+
+# Parallel processing for multi-drive search
+rayon = "1.8"
+
+[build-dependencies]
+winres = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[[bin]]
+name = "rustle"
+path = "src/main.rs"
